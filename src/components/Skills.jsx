@@ -5,7 +5,7 @@ import SkillsCard from "./SkillsCard";
 
 export default function Skills() {
   return (
-    <section id="skills" className="w-full flex flex-col items-center justify-center py-20 px-6">
+    <section id="skills" className="w-full flex flex-col items-center justify-center pt-25 px-6">
       
       {/* Heading with underline */}
       <div className="text-center mb-6">

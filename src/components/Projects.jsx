@@ -8,7 +8,15 @@ const projects = [
     year: "2025",
     title: "ChitChat",
     desc: "Real-time chat platform with live messaging, presence indicators, and JWT authentication.",
-    tech: ["React", "Next.js", "Zustand", "Cloudinary", "Socket.io", "JWT"],
+    tech: [
+      "React",
+      "Express",
+      "MongoDB",
+      "Socket.IO",
+      "Tailwind CSS",
+      "DaisyUI",
+      "JWT",
+    ],
     github: "https://github.com/JayeshJoshi2005/ChitChat",
     live: "https://chitchat-9gur.onrender.com/",
   },
@@ -20,10 +28,10 @@ const projects = [
     tech: [
       "Next.js",
       "React",
-      "TailwindCSS",
-      "Gemini API",
+      "Tailwind CSS",
       "Drizzle ORM",
       "PostgreSQL",
+      "Gemini API",
     ],
     github: "https://github.com/JayeshJoshi2005/KontentAI",
     live: "https://kontent-ai-sigma.vercel.app/",
@@ -32,7 +40,7 @@ const projects = [
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 text-white flex">
+    <section id="projects" className="pt-25 text-white flex">
       <div className="max-w-6xl mx-auto px-6">
         {/* Centered Heading */}
         <div className="text-center mb-12">
