@@ -10,7 +10,7 @@ export default function Hero() {
       id="home"
       className="flex items-center justify-center min-h-screen text-center md:text-left"
     >
-      <div className="z-10 flex flex-col md:flex-row items-center justify-between max-w-6xl px-6 w-full gap-8">
+      <div className="z-10 flex flex-col md:flex-row items-center justify-between max-w-6xl mt-10 px-6 w-full gap-8">
         {/* Left side - Text */}
         <div className="flex-1 flex flex-col items-center md:items-start mt-10">
           <h1 className=" text-4xl md:text-4xl font-semibold mb-3 text-gray-100">
