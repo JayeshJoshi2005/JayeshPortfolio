@@ -4,25 +4,28 @@ import {
   motion,
   useMotionTemplate,
   useMotionValue,
+  useReducedMotion,
   useSpring,
 } from "framer-motion";
+import { MOTION } from "@/lib/motion";
 
-const ROTATION_RANGE = 25;
+const ROTATION_RANGE = 14;
 const HALF_ROTATION = ROTATION_RANGE / 2;
 
 export default function SkillsCard({ icon, name }) {
   const ref = useRef(null);
   const [hovered, setHovered] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   // Motion values for 3D rotation
   const x = useMotionValue(0);
   const y = useMotionValue(0);
-  const xSpring = useSpring(x, { stiffness: 120, damping: 10 });
-  const ySpring = useSpring(y, { stiffness: 120, damping: 10 });
+  const xSpring = useSpring(x, MOTION.springSoft);
+  const ySpring = useSpring(y, MOTION.springSoft);
   const transform = useMotionTemplate`rotateX(${xSpring}deg) rotateY(${ySpring}deg)`;
 
   const handleMouseMove = (e) => {
-    if (!ref.current) return;
+    if (!ref.current || shouldReduceMotion) return;
 
     const rect = ref.current.getBoundingClientRect();
     const width = rect.width;
@@ -51,14 +54,16 @@ export default function SkillsCard({ icon, name }) {
         ref={ref}
         style={{
           transformStyle: "preserve-3d",
-          transform,
+          transform: shouldReduceMotion ? "none" : transform,
         }}
         onMouseMove={handleMouseMove}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={handleMouseLeave}
+        whileHover={shouldReduceMotion ? undefined : { scale: 1.03 }}
         className="relative w-24 h-24 sm:w-28 sm:h-28 flex items-center justify-center 
-                    rounded-xl  hover:shadow-xs shadow-blue-950 
-                   transition-all duration-300 cursor-pointer"
+                    rounded-xl shadow-blue-950 hover:shadow-xs
+                    transition-[transform,box-shadow] duration-300 ease-out
+                    transform-gpu will-change-transform cursor-pointer"
       >
         <div
           style={{
@@ -83,7 +88,7 @@ export default function SkillsCard({ icon, name }) {
           opacity: hovered ? 1 : 0,
           y: hovered ? 0 : -5,
         }}
-        transition={{ duration: 0.25 }}
+        transition={{ duration: MOTION.normal, ease: "easeOut" }}
         className="mt-2 text-sm text-gray-300 font-medium tracking-wide"
       >
         {name}

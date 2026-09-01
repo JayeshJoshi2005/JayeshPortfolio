@@ -69,7 +69,7 @@ export default function Hero() {
         {/* Right side - Picture */}
         <div className="flex-1 flex justify-center md:justify-end">
           <img
-            src="/ghibli.png" // replace with your image
+            src="/ghibli.png" 
             alt="Jayesh"
             className="w-64 md:w-120 rounded-full shadow-2xl "
           />

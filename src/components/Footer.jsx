@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
 export default function Footer() {
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+    window.location.reload();
+  };
   
   // Typewriter logic
   const texts = [
@@ -39,11 +43,17 @@ export default function Footer() {
     <footer className="w-full mt-20 border-t border-white/10 backdrop-blur-[1px] bg-transparent py-8">
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col items-center md:items-start">
-          <img
-            src="/JJpng.png"
-            alt="JJ Logo"
-            className="w-60 h-20 object-contain opacity-90 hover:opacity-100 transition-all duration-300"
-          />
+          <button
+            onClick={handleLogoClick}
+            className="cursor-pointer"
+            aria-label="Reload page and go to top"
+          >
+            <img
+              src="/JJpng.png"
+              alt="JJ Logo"
+              className="w-60 h-20 object-contain opacity-90 hover:opacity-100 transition-all duration-300"
+            />
+          </button>
         </div>
 
         <div className="text-center md:text-right text-gray-400 text-lg flex flex-col items-center md:items-end">

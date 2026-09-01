@@ -1,19 +1,39 @@
 "use client";
 import Link from "next/link";
 export default function Header() {
+  const handleLogoClick = () => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+    window.location.reload();
+  };
+
   const scrollToSection = (id) => {
     const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (!el) return;
+
+    const headerOffset = 72;
+    const targetY =
+      el.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    window.scrollTo({
+      top: Math.max(targetY, 0),
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
   };
 
   return (
     <header className="fixed top-0 left-0 w-full z-50 backdrop-blur-[2px] bg-transparent rounded-b-lg border-b border-white/5">
       <div className="flex items-center justify-between max-w-8xl mx-auto px-6 py-1">
         {/* Left - Name */}
-       
-          <img src="/JJpng.png" alt="JJ Logo" className=" w-20  flex items-center  " />
-          
-        
+        <button
+          onClick={handleLogoClick}
+          className="cursor-pointer"
+          aria-label="Reload page and go to top"
+        >
+          <img src="/JJpng.png" alt="JJ Logo" className="w-20 flex items-center" />
+        </button>
 
         {/* Middle - Nav */}
         <nav className="hidden md:flex gap-10 text-lg text-white font-light">
