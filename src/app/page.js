@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Skills from "@/components/Skills";
@@ -6,10 +7,20 @@ import Projects from "@/components/Projects";
 import DotGrid from "@/components/DotGrid";
 import ContactMe from "@/components/ContactMe";
 import Footer from "@/components/Footer";
+import LoadingScreen from "@/components/LoadingScreen";
 
 export default function Page() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setIsLoading(false), 2000);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
   return (
-    <main className="relative min-h-screen text-white overflow-hidden">
+    <main className="relative min-h-screen overflow-hidden text-white" aria-busy={isLoading}>
+      <LoadingScreen isVisible={isLoading} />
       {/* ===== Global Background (applies everywhere) ===== */}
       <div className="absolute inset-0 -z-10 bg-[#070113]">
         <DotGrid
