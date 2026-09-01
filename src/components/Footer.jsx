@@ -4,8 +4,14 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   const handleLogoClick = () => {
-    window.scrollTo({ top: 0, behavior: "auto" });
-    window.location.reload();
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    window.scrollTo({
+      top: 0,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
   };
   
   // Typewriter logic
@@ -46,7 +52,7 @@ export default function Footer() {
           <button
             onClick={handleLogoClick}
             className="cursor-pointer"
-            aria-label="Reload page and go to top"
+            aria-label="Go to top of page"
           >
             <img
               src="/JJpng.png"

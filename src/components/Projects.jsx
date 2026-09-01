@@ -93,14 +93,23 @@ export default function Projects() {
                   shouldReduceMotion
                     ? { duration: MOTION.quick }
                     : {
-                        type: "spring",
-                        stiffness: 60,
-                        damping: 18,
-                        mass: 0.8,
+                        duration: 0.65,
+                        ease: [0.22, 1, 0.36, 1],
                         delay: index * 0.05,
                       }
                 }
-                whileHover={shouldReduceMotion ? undefined : { scale: 1.01 }}
+                whileHover={
+                  shouldReduceMotion
+                    ? undefined
+                    : {
+                        scale: 1.01,
+                        y: -4,
+                        transition: {
+                          duration: 0.28,
+                          ease: [0.22, 1, 0.36, 1],
+                        },
+                      }
+                }
                 className={`flex flex-col md:flex-row ${
                   !isEven ? "md:flex-row-reverse" : ""
                 } group items-center gap-6 sm:gap-8 border border-white/10 bg-white/[0.02] backdrop-blur-[2px] rounded-2xl overflow-hidden shadow-lg transition-[box-shadow,border-color,background-color] duration-500 ease-out hover:bg-white/[0.04] hover:shadow-[#7F5AF0]/20 hover:border-white/20 transform-gpu will-change-transform`}

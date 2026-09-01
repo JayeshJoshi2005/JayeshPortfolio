@@ -4,6 +4,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import XIcon from "@mui/icons-material/X";
+import { SiCodeforces, SiLeetcode } from "react-icons/si";
 export default function Hero() {
   return (
     <section
@@ -62,7 +63,27 @@ export default function Hero() {
               <XIcon fontSize="large" />
             </a>
 
-            
+            {/* LeetCode */}
+            <a
+              href="https://leetcode.com/u/Jayesh_Joshi/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Jayesh Joshi's LeetCode profile"
+              className="w-12 h-12 flex items-center justify-center bg-transparent border border-white/20 rounded-lg hover:scale-110 transition-transform text-white shadow-md"
+            >
+              <SiLeetcode fontSize="xx-large" />
+            </a>
+
+            {/* Codeforces */}
+            <a
+              href="https://codeforces.com/profile/jayeshjoshi2005"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Jayesh Joshi's Codeforces profile"
+              className="w-12 h-12 flex items-center justify-center bg-transparent border border-white/20 rounded-lg hover:scale-110 transition-transform text-white shadow-md"
+            >
+              <SiCodeforces fontSize="xx-large" />
+            </a>
           </div>
         </div>
 
